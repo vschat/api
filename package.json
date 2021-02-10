@@ -2,11 +2,12 @@
   "name": "api",
   "version": "1.0.0",
   "description": "The official repository for VSChat's API.",
-  "main": "src/index.ts",
+  "main": "./dist/index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon src/index.ts",
-    "lint": "prettier --write ."
+    "start": "yarn build && node .",
+    "dev": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
+    "lint": "prettier --write .",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
