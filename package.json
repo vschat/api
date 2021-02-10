@@ -1,43 +1,45 @@
 {
-  "name": "api",
-  "version": "1.0.0",
-  "description": "vschat's api",
-  "main": "./dist/index.js",
-  "scripts": {
-    "start": "yarn build && node .",
-    "dev": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
-    "lint": "prettier --write .",
-    "build": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vschat/api.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vschat/api/issues"
-  },
-  "homepage": "https://github.com/vschat/api#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "consola": "^2.15.3",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "helmet": "^4.4.1",
-    "tslib": "^2.1.0",
-    "typescript": "^4.1.4"
-  },
-  "devDependencies": {
-    "@types/body-parser": "^1.19.0",
-    "@types/cors": "^2.8.9",
-    "@types/express": "^4.17.11",
-    "@types/helmet": "^4.0.0",
-    "@types/node": "^14.14.25",
-    "prettier": "^2.2.1",
-    "ts-node": "^9.1.1",
-    "ts-node-dev": "^1.1.1"
-  }
+	"name": "api",
+	"version": "1.0.0",
+	"description": "vschat's api",
+	"main": "./dist/index.js",
+	"scripts": {
+		"start": "yarn build && node .",
+		"dev": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
+		"lint": "prettier --write .",
+		"build": "tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vschat/api.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/vschat/api/issues"
+	},
+	"homepage": "https://github.com/vschat/api#readme",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"consola": "^2.15.3",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"helmet": "^4.4.1",
+		"tslib": "^2.1.0",
+		"typescript": "^4.1.4",
+		"ws": "^7.4.3"
+	},
+	"devDependencies": {
+		"@types/body-parser": "^1.19.0",
+		"@types/cors": "^2.8.9",
+		"@types/express": "^4.17.11",
+		"@types/helmet": "^4.0.0",
+		"@types/node": "^14.14.25",
+		"@types/ws": "^7.4.0",
+		"prettier": "^2.2.1",
+		"ts-node": "^9.1.1",
+		"ts-node-dev": "^1.1.1"
+	}
 }
