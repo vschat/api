@@ -11,7 +11,6 @@ The powerful backend powering **VSChat** - the free and fast **[Visual Studio Co
 
 ## To-Do
 
-- WebSocket Server
 - GitHub OAuth
 
 ## Contributing
