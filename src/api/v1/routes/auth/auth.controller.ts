@@ -11,6 +11,16 @@ export class AuthController {
 	public githubCallback(req: Request, res: Response): void {
 		const code = req.query.code;
 
-		axios;
+		axios({
+			method: "post",
+			url: `https://github.com/login/oauth/access_token?client_id=${process.env.GH_CLIENT_ID}&client_secret=${process.env.GH_CLIENT_SECRET}&code=${code}`,
+			headers: {
+				accept: "application/json",
+			},
+		}).then((response) => {
+			const accessToken = response.data.access_token;
+
+			res.json({ success: true, accessToken: accessToken });
+		});
 	}
 }
