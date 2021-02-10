@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
 export class AuthController {
 	public github(req: Request, res: Response): void {
