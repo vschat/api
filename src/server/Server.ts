@@ -3,6 +3,7 @@ import { apiV1 } from "../apiV1/BaseRouter";
 import express, { Request, Response, NextFunction } from "express";
 
 import consola, { Consola } from "consola";
+import helmet from 'helmet';
 import cors from "cors";
 import * as bodyParser from "body-parser";
 
@@ -30,6 +31,7 @@ export class Server {
   private setConfig() {
     this.app.use(express.json());
     this.app.use(cors());
+    this.app.use(helmet());
     this.app.use(bodyParser.urlencoded({ extended: true }));
 
     dotenv.config();
