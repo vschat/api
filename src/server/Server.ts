@@ -48,6 +48,6 @@ export class Server {
       res.send("VSChat API");
     });
 
-    this.app.use("/api/v1/", apiV1);
+    this.app.use("/api/v1", apiV1);
   }
 }
