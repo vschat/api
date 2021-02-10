@@ -1,5 +1,5 @@
 import { apiV1 } from "../api/v1/BaseRouter";
-import { wss } from "../ws/v1/ws";
+import { wss } from "../ws/v1/WebSocketServer";
 import express, { Request, Response, NextFunction } from "express";
 
 import consola, { Consola } from "consola";
@@ -23,6 +23,7 @@ export class Server {
 	}
 
 	public start(): void {
+		dotenv.config();
 		this.ws = new wss(this.wsPort as number);
 		this.ws.start();
 		this.rest.listen(this.restPort, () =>
