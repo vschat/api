@@ -9,6 +9,11 @@ The powerful backend powering **VSChat** - the free and fast **[Visual Studio Co
 - **PostgreSQL** - Database system
 - **Prisma** - ORM
 
+## To-Do
+
+- WebSocket Server
+- GitHub OAuth
+
 ## Contributing
 
 Check the [contributing guidelines](https://github.com/vschat/api/tree/main/.github/CONTRIBUTING.md)
