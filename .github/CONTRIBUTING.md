@@ -10,9 +10,10 @@ Here are some instructions to get set up with the API locally.
    > Make sure you're working from your branch!
 2. Next, you need to install all the dependencies we use. To do so, simply go to your terminal, and run the command `yarn`, as we use the Yarn package manager. Please make sure to not use NPM when installing the dependencies.
 3. Finally, you can use the several `package.json` scripts to start the project and contribute.
-4. We use GitHub OAuth for authentication. To set it up in dev mode, visit [github.com/settings/applications/new](https://github.com/settings/applications/new), and create a OAuth application. Take its client ID and secret, and paste it into your .env under **GH_CLIENT_ID**, and **GH_CLIENT_SECRET**, respectively.
-5. Before you continue, ensure the script `lint` was ran. This allows us to keep a consistent style on our code.
-6. Once your code is pushed, create a pull request, requesting to merge your changes into the `main` branch. It will be reviewed by the maintainers.
+4. We use PostgreSQL for our database, and Prisma as our ORM. to connect to it, use `SAMPLE.env`, as a template, and fill out the connection string.
+5. Also, we use GitHub OAuth for authentication. To set it up in dev mode, visit [github.com/settings/applications/new](https://github.com/settings/applications/new), and create a OAuth application. Take its client ID and secret, and paste it into your .env under **GH_CLIENT_ID**, and **GH_CLIENT_SECRET**, respectively.
+6. Before you continue, ensure the script `lint` was ran. This allows us to keep a consistent style on our code.
+7. Once your code is pushed, create a pull request, requesting to merge your changes into the `main` branch. It will be reviewed by the maintainers.
 
 ### Script Index
 
