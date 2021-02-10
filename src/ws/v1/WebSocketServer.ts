@@ -1,4 +1,3 @@
-// the almighty ws server
 import { Server } from "ws";
 
 class wss {
