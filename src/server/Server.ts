@@ -1,13 +1,13 @@
 //Import versions
-import { apiV1 } from '../api/v1/BaseRouter';
-import express, { Request, Response, NextFunction } from 'express';
+import { apiV1 } from "../api/v1/BaseRouter";
+import express, { Request, Response, NextFunction } from "express";
 
-import consola, { Consola } from 'consola';
-import helmet from 'helmet';
-import cors from 'cors';
-import * as bodyParser from 'body-parser';
+import consola, { Consola } from "consola";
+import helmet from "helmet";
+import cors from "cors";
+import * as bodyParser from "body-parser";
 
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 
 export class Server {
 	public app: express.Application;
@@ -46,10 +46,10 @@ export class Server {
 	}
 
 	private setRoutes() {
-		this.app.get('/', (req: Request, res: Response) => {
-			res.send('VSChat API');
+		this.app.get("/", (req: Request, res: Response) => {
+			res.send("VSChat API");
 		});
 
-		this.app.use('/api/v1', apiV1);
+		this.app.use("/api/v1", apiV1);
 	}
 }
