@@ -1,10 +1,11 @@
 // the almighty ws server
 import { Server } from "ws";
 
-const wss: Server = new Server({
-	port: 8080,
-});
-
-wss.on("connection", (socket, req) => {
-	socket.emit("message", "hello world.");
-});
+class wss {
+	public wss: Server;
+	public constructor(public port: number) {}
+	public start(): void {
+		this.wss = new Server({ port: this.port });
+	}
+}
+export { wss };

@@ -1,5 +1,5 @@
-//Import versions
 import { apiV1 } from "../api/v1/BaseRouter";
+import { wss } from "../ws/v1/ws";
 import express, { Request, Response, NextFunction } from "express";
 
 import consola, { Consola } from "consola";
@@ -10,46 +10,43 @@ import * as bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 
 export class Server {
-	public app: express.Application;
+	public rest: express.Application;
+	public ws: wss;
 	public logger: Consola = consola;
-	public PORT = 3000 || process.env.PORT;
+	public restPort = process.env.PORT || 3000;
+	public wsPort = process.env.WS_PORT || 8080;
 
 	public constructor() {
-		this.app = express();
-
-		this.setConfig();
-		this.setRequestLogger();
-		this.setRoutes();
+		this.rest = express();
+		this.middleware();
+		this.registerRoutes();
 	}
 
-	public start() {
-		this.app.listen(this.PORT, () => {
-			this.logger.success(`Server started on port ${this.PORT}`);
-		});
+	public start(): void {
+		this.ws = new wss(this.wsPort as number);
+		this.ws.start();
+		this.rest.listen(this.restPort, () =>
+			this.logger.success(`REST API started on port ${this.restPort}`)
+		);
+		this.ws.wss.on("listening", () =>
+			this.logger.success(`WebSocket started on port ${this.wsPort}`)
+		);
 	}
-
-	private setConfig() {
-		this.app.use(express.json());
-		this.app.use(cors());
-		this.app.use(helmet());
-		this.app.use(bodyParser.urlencoded({ extended: true }));
-
-		dotenv.config();
-	}
-
-	private setRequestLogger() {
-		this.app.use(async (req: Request, res: Response, next: NextFunction) => {
+	private middleware(): void {
+		this.rest.use(express.json());
+		this.rest.use(cors());
+		this.rest.use(helmet());
+		this.rest.use(bodyParser.urlencoded({ extended: true }));
+		this.rest.use(async (req: Request, res: Response, next: NextFunction) => {
 			console.log(`[${req.method} - ${req.path}]`);
 
 			next();
 		});
 	}
-
-	private setRoutes() {
-		this.app.get("/", (req: Request, res: Response) => {
-			res.send("VSChat API");
-		});
-
-		this.app.use("/api/v1", apiV1);
+	private registerRoutes(): void {
+		this.rest.get("/", (req: Request, res: Response) =>
+			res.json({ msg: "🚀" })
+		);
+		this.rest.use("/api/v1", apiV1);
 	}
 }
