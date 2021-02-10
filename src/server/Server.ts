@@ -1,5 +1,5 @@
 import { apiV1 } from "../api/v1/BaseRouter";
-import { wss } from "../ws/v1/WebSocketServer";
+import { WebSocketServer } from "../ws/v1/WebSocketServer";
 import express, { Request, Response, NextFunction } from "express";
 
 import consola, { Consola } from "consola";
@@ -11,7 +11,7 @@ import * as dotenv from "dotenv";
 
 export class Server {
 	public rest: express.Application;
-	public ws: wss;
+	public ws: WebSocketServer;
 	public logger: Consola = consola;
 	public restPort = process.env.PORT || 3000;
 	public wsPort = process.env.WS_PORT || 8080;
@@ -24,7 +24,7 @@ export class Server {
 
 	public start(): void {
 		dotenv.config();
-		this.ws = new wss(this.wsPort as number);
+		this.ws = new WebSocketServer(this.wsPort as number);
 		this.ws.start();
 		this.rest.listen(this.restPort, () =>
 			this.logger.success(`REST API started on port ${this.restPort}`)
