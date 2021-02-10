@@ -1,5 +1,5 @@
 //Import versions
-import { apiV1 } from "../apiV1/BaseRouter";
+import { apiV1 } from "../api/v1/BaseRouter";
 import express, { Request, Response, NextFunction } from "express";
 
 import consola, { Consola } from "consola";
