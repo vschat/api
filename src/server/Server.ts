@@ -30,7 +30,7 @@ export class Server {
 			this.logger.success(`REST API started on port ${this.restPort}`)
 		);
 		this.ws.wss.on("listening", () =>
-			this.logger.success(`WebSocket started on port ${this.wsPort}`)
+			this.logger.success(`WebSocket Server started on port ${this.wsPort}`)
 		);
 	}
 	private middleware(): void {
