@@ -1,6 +1,6 @@
 import WebSocket, { Server } from "ws";
 
-interface BetterSocket extends WebSocket {
+interface ExtendedSocket extends WebSocket {
 	isAlive?: boolean;
 }
 export class WebSocketServer {
@@ -17,7 +17,7 @@ export class WebSocketServer {
 		function heartbeat() {
 			this.isAlive = true;
 		}
-		this.wss.on("connection", (ws: BetterSocket) => {
+		this.wss.on("connection", (ws: ExtendedSocket) => {
 			ws.isAlive = true;
 			ws.on("pong", heartbeat);
 			ws.on("message", (message) => {
@@ -29,7 +29,7 @@ export class WebSocketServer {
 			});
 		});
 		const interval = setInterval(function ping() {
-			this.wss.clients.forEach(function each(ws: BetterSocket) {
+			this.wss.clients.forEach(function each(ws: ExtendedSocket) {
 				if (ws.isAlive == false) return ws.terminate();
 
 				ws.isAlive = false;
